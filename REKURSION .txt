@@ -1,0 +1,30 @@
+REKURSION -->  Skriver förunktion som anropar sig själv.
+Används när vi ska räknar ut (eller komma fram till) något och vi behöver göra det i flera steg där varje steg är beroende av resultatet av föregående steg. 
+
+- och vi på förhand inte vet hur många iterationer som kommer att behövas.
+
+--> Metod som anropar sig själva, utan att fastna i en oändlig loop.
+
+Exempel på användningområde = 
+* Att travisera trädstrukturer (tex filträdet) när vi inte vet hur många nivåer som finns. Hitta någon speciell fil.
+* Fakultet av ett tal (x!) är talet multiplicerat med talet under, multiplicerat med talet under osvosv tills man kommer till 1. 
+5! är 5*4*3*2*1 = 120
+
+Exempel på kod för fakultet (använd oftast long) ->
+//3! = 3*2*1
+
+fun fact(n:Long) : Long{
+if(n<= 1 return 1 //STOP villkoret.
+return n * fact(n-1) //n*funktionen -1 tills man når 1.
+}
+
+Annat exempel på hur man skriver rekursion;
+
+fun factAcc(n: Long) : Long{
+fun factInnerAcc(acc: Long, n: Long) : Long{ //inre funktion
+if(n==1L) return acc
+else return factInnerAcc(n*acc, n-1) //retunerar inre funktionen med inre variabeln samt den yttre funktionens variabel. 
+}
+return factInnerAcc(1, n)
+
+}
